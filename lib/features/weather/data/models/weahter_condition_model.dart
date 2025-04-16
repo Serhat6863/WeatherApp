@@ -8,9 +8,9 @@ class WeatherConditionModel extends WeatherCondition{
     required int code,
 
   }) : super(
-    text: '',
-    icon: '',
-    code: 0,
+    text: text,
+    icon: icon,
+    code: code,
   );
 
 
