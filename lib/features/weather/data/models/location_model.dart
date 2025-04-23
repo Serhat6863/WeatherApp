@@ -23,16 +23,20 @@ class LocationModel extends Location {
 
   factory LocationModel.fromJson(Map<String, dynamic> json) {
     return LocationModel(
-      name: json['name'],
-      region: json['region'],
-      country: json['country'],
-      lat: json['lat'],
-      lon: json['lon'],
-      tzId: json['tz_id'],
-      localtimeEpoch: json['localtime_epoch'],
-      localtime: json['localtime'],
+      name: json['name'] ?? '',
+      region: json['region'] ?? '',
+      country: json['country'] ?? '',
+      lat: json['lat'] ?? 0.0,
+      lon: json['lon'] ?? 0.0,
+      tzId: json['tz_id'] ?? '',
+      localtimeEpoch: json['localtime_epoch'] ?? 0,
+      localtime: json['localtime'] ?? '',
     );
   }
+
+
+
+
 
   Map<String, dynamic> toJson() {
     return {

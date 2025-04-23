@@ -12,3 +12,14 @@ class FetchWeatherEvent extends WeatherEvent{
   @override
   List<Object> get props => [cityName];
 }
+
+class FetchSuggestionsEvent extends WeatherEvent{
+  final String query;
+
+  FetchSuggestionsEvent({required this.query});
+
+  @override
+  List<Object> get props => [query];
+}
+
+

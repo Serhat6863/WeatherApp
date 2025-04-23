@@ -1,14 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:weather_app/core/constants/cosntants.dart';
+import 'package:weather_app/features/weather/data/models/location_model.dart';
 import 'package:weather_app/features/weather/data/models/weahter_data_model.dart';
 
 part 'weather_api_service.g.dart';
 
-
-
 @RestApi(baseUrl: baseUrl)
-abstract class WeatherApiService{
+abstract class WeatherApiService {
   factory WeatherApiService(Dio dio) = _WeatherApiService;
 
   @GET("/current.json")
@@ -16,5 +15,11 @@ abstract class WeatherApiService{
     @Query('key') String apiKey,
     @Query('q') String city,
     @Query('aqi') String aqi,
+  );
+
+  @GET("/search.json")
+  Future<HttpResponse<List<LocationModel>>> searchLocation(
+    @Query('key') String apiKey,
+    @Query('q') String city,
   );
 }

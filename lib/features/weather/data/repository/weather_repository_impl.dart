@@ -1,26 +1,24 @@
 import 'package:weather_app/core/constants/cosntants.dart';
 import 'package:weather_app/features/weather/data/api/weather_api_service.dart';
+import 'package:weather_app/features/weather/domain/entities/location.dart';
 import 'package:weather_app/features/weather/domain/entities/weather_data.dart';
 import 'package:weather_app/features/weather/domain/repository/weather_repository.dart';
 
-class WeatherRepositoryImpl implements WeatherRepository{
-
+class WeatherRepositoryImpl implements WeatherRepository {
   final WeatherApiService weatherApiService;
 
-  WeatherRepositoryImpl({
-    required this.weatherApiService,
-  });
+  WeatherRepositoryImpl({required this.weatherApiService});
 
   @override
   Future<WeatherData> getCurrentWeather(String city) async {
-    try{
+    try {
       final response = await weatherApiService.getCurrentWeather(
         apikey,
         city,
         'no',
       );
 
-      if(response.response.statusCode != 200){
+      if (response.response.statusCode != 200) {
         throw Exception("erreur lors de la requete");
       }
 
@@ -30,9 +28,23 @@ class WeatherRepositoryImpl implements WeatherRepository{
         location: weatherData.location,
         current: weatherData.current,
       );
-    }catch(e){
+    } catch (e) {
       throw Exception("erreur lors de la requete ${e.toString()}");
     }
   }
 
+  @override
+  Future<List<Location>> searchLocation(String city) async {
+    try {
+      final response = await weatherApiService.searchLocation(apikey, city);
+
+      if (response.response.statusCode != 200) {
+        throw Exception("erreur lors de la requete");
+      }
+
+      return response.data;
+    } catch (e) {
+      throw Exception("erreur lors de la requete ${e.toString()}");
+    }
+  }
 }

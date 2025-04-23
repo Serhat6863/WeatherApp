@@ -8,6 +8,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState>{
   
   WeatherBloc({required this.weatherRepository}) : super(WeatherState.initiel()){
     on<FetchWeatherEvent>(_onFetchWeatherEvent);
+    on<FetchSuggestionsEvent>(_onFetchSuggestionsEvent);
   }
   
   
@@ -20,4 +21,19 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState>{
       emit(WeatherState.error(e.toString()));
     }
   }
+
+  Future<void> _onFetchSuggestionsEvent(FetchSuggestionsEvent event, Emitter<WeatherState> emit) async {
+    emit(WeatherState.loading());
+    try{
+      final suggestions = await weatherRepository.searchLocation(event.query);
+      emit(WeatherState.suggestions(suggestions));
+    }catch(e){
+      emit(WeatherState.error(e.toString()));
+    }
+  }
+
+
+
+
+
 }
