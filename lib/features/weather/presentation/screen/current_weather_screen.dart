@@ -229,7 +229,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                         state.status != WeatherStatus.loading)
                       const Center(
                         child: Text(
-                          "No data",
+                          "No results found",
                           style: TextStyle(color: Colors.white, fontSize: 18),
                         ),
                       ),
