@@ -6,7 +6,7 @@ class CurrentWeatherModel extends CurrentWeather {
   @override
   final WeatherConditionModel condition;
 
-  CurrentWeatherModel({
+   CurrentWeatherModel({
     required double tempC,
     required double tempF,
     required int isDay,

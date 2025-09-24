@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:weather_app/features/weather/domain/entities/weahter_condition.dart';
 
-class CurrentWeather{
+class CurrentWeather extends Equatable{
   final double tempC;
   final double tempF;
   final int isDay;
@@ -28,5 +29,21 @@ class CurrentWeather{
     required this.humidity,
     required this.cloud,
   });
+
+  @override
+  List<Object?> get props => [
+    tempC,
+    tempF,
+    isDay,
+    condition,
+    windMph,
+    windKph,
+    windDegree,
+    windDir,
+    pressureMb,
+    precipMm,
+    humidity,
+    cloud,
+  ];
 
 }

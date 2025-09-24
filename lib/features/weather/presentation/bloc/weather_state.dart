@@ -1,5 +1,5 @@
+import 'package:equatable/equatable.dart';
 import 'package:weather_app/features/weather/domain/entities/weather_data.dart';
-
 import '../../domain/entities/location.dart';
 
 enum WeatherStatus{initial, loading, loaded, error}
@@ -9,17 +9,15 @@ extension WeatherStatusX on WeatherStatus {
   bool get isLoading => this == WeatherStatus.loading;
   bool get isLoaded => this == WeatherStatus.loaded;
   bool get isError => this == WeatherStatus.error;
-
 }
 
-
-class WeatherState {
+class WeatherState extends Equatable {
   final WeatherStatus status;
   final String message;
-  final WeatherData ? weatherData;
-  final List<Location> ? suggestions;
+  final WeatherData? weatherData;
+  final List<Location>? suggestions;
 
-  WeatherState({
+  const WeatherState({
     required this.status,
     required this.message,
     this.weatherData,
@@ -36,7 +34,6 @@ class WeatherState {
     message: '',
   );
 
-
   factory WeatherState.loaded(WeatherData data) => WeatherState(
     status: WeatherStatus.loaded,
     message: '',
@@ -48,21 +45,17 @@ class WeatherState {
     message: message,
   );
 
-
   factory WeatherState.suggestions(List<Location> suggestions) => WeatherState(
     status: WeatherStatus.loaded,
     message: '',
     suggestions: suggestions,
   );
 
-
-
   WeatherState copyWith({
     WeatherStatus? status,
     String? message,
     WeatherData? weatherData,
     List<Location>? suggestions,
-
   }) {
     return WeatherState(
       status: status ?? this.status,
@@ -72,7 +65,6 @@ class WeatherState {
     );
   }
 
-
   @override
   List<Object?> get props => [
     status,
@@ -80,5 +72,4 @@ class WeatherState {
     weatherData,
     suggestions,
   ];
-
 }

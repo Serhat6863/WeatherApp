@@ -1,4 +1,6 @@
-class Location{
+import 'package:equatable/equatable.dart';
+
+class Location extends Equatable{
   final String name;
   final String region;
   final String country;
@@ -18,6 +20,10 @@ class Location{
     required this.localtimeEpoch,
     required this.localtime,
   });
+
+
+  @override
+  List<Object?> get props => [name, region, country, lat, lon, tzId, localtimeEpoch, localtime];
 
 
 }
