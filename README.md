@@ -56,23 +56,23 @@ Cette section vous guide à travers les fonctionnalités principales de WeatherA
 **Premier lancement**
 Après l'installation de l'application, vous verrez un écran principale avec une barre de recherche pour trouver la méteo de n'importe qu'elle ville
 1. Tapez sur la barre de recherche
+### Écran principal
+![Écran principal]("screenshots/home_screen.png")
+
 2. Tapez le nom de la ville
-3. Selectionnez dans la liste d'autocomplétion
-4. la météo s'affiche
-
-## Captures d'écran et démonstration
-
-### Écran principal*
-![Écran principal](<img width="200" alt="home_screen" src="screenshots/home_screen.png" />)
-
+   
 ### Recherche d"une ville
-![Recherche d'une ville](<img width="200" alt="home_screen" src="screenshots/home_screen_sugest.png" />)
+![Recherche d'une ville]("screenshots/home_screen_sugest.png" )
+   
 
+4. la météo s'affiche
 ### Prévisions météo
-![Prévision météo](<img width="200" alt="home_screen" src="screenshots/home_screen_result.png" />)
+![Prévision météo]("screenshots/home_screen_result.png")
+
+
 
 ### Démonstration Video
-![Démo WeatherApp](screenshots/home_screen_video.mp4)
+![Démo WeatherApp](screenshots/home_screen_video_gif.gif)
 
 
 
