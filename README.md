@@ -51,28 +51,30 @@ flutter test
 
 
 ## Usage
-Cette section vous guide à travers les fonctionnalités principales de WeatherApp
 
-**Premier lancement**
-Après l'installation de l'application, vous verrez un écran principale avec une barre de recherche pour trouver la méteo de n'importe qu'elle ville
-1. Tapez sur la barre de recherche
+Cette section vous guide à travers les fonctionnalités principales de WeatherApp.
+
+### Premier lancement
+Après l'installation de l'application, vous verrez un écran principal avec une barre de recherche pour trouver la météo de n'importe quelle ville.  
+
+1. Tapez sur la barre de recherche.
+
 ### Écran principal
-![Écran principal](screenshots/home_screen.png)
+<img src="screenshots/home_screen.png" width="400" />
 
-2. Tapez le nom de la ville
-   
-### Recherche d"une ville
-![Recherche d'une ville](screenshots/home_screen_sugest.png )
-   
+2. Tapez le nom de la ville.
 
-4. la météo s'affiche
+### Recherche d'une ville
+<img src="screenshots/home_screen_sugest.png" width="400" />
+
+3. La météo s'affiche.
+
 ### Prévisions météo
-![Prévision météo](screenshots/home_screen_result.png)
+<img src="screenshots/home_screen_result.png" width="400" />
 
+### Démonstration vidéo
+<img src="screenshots/home_screen_video_gif.gif" width="400" />
 
-
-### Démonstration Video
-![Démo WeatherApp](screenshots/home_screen_video_gif.gif)
 
 
 
