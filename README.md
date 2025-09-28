@@ -1,14 +1,23 @@
-# WeatherApp – Une application météo simple
+# 🌤 WeatherApp – Une application météo moderne
 
-**WeatherApp** est une application mobile développée avec **Flutter** qui permet de consulter en temps réel la météo d’une ville choisie.  
+![Flutter](https://img.shields.io/badge/Flutter-3.7.2+-blue)
+![Dart](https://img.shields.io/badge/Dart-2.19+-blue)
+![BLoC](https://img.shields.io/badge/State%20Management-BLoC-purple)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-Au-delà d’un simple projet météo, cette application m’a permis de mettre en pratique plusieurs concepts clés avec Flutter :  
+**WeatherApp** est une application mobile élégante développée avec **Flutter** qui permet de consulter en temps réel la météo de n'importe quelle ville dans le monde.
 
--  **Intégration d’API externes** avec **Retrofit**  
--  **Gestion d’état** avec **BLoC**  
--  **Clean Architecture** et structuration du code avec **build_runner** & **json_serializable**  
+Au-delà d'un simple projet météo, cette application démontre une maîtrise des concepts avancés de développement Flutter avec une architecture solide et scalable.
 
 ---
+
+##  Fonctionnalités
+
+-  **Recherche intelligente** - Suggestions de villes en temps réel
+-  **Météo détaillée** - Température, humidité, vitesse du vent, pression
+-  **UI/UX moderne** - Interface Material Design responsive
+-  **Performances optimisées** - Chargement rapide, states bien gérés
+-  **Architecture clean** - Code maintenable et testable
 
 ## Plateformes supportées
 
