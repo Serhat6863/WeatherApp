@@ -21,22 +21,22 @@ Au-delà d’un simple projet météo, cette application m’a permis de mettre 
 
 1. Installer le **Flutter SDK** : [Guide officiel](https://flutter.dev/docs/get-started/install)  
 2. Cloner le dépôt :  
-&nbsp;&nbsp;```bash
-&nbsp;&nbsp;git https://github.com/Serhat6863/WeatherApp.git
-&nbsp;&nbsp;```
+```bash
+git clone https://github.com/Serhat6863/WeatherApp.git
+```
 3. Accéder au dossier du projet et installer les dépendances :
-&nbsp;&nbsp;```bash
-&nbsp;&nbsp;cd myapp
-&nbsp;&nbsp;flutter pub get
-&nbsp;&nbsp;```
+```bash
+cd myapp
+flutter pub get
+```
 4. Générer le code nécessaire (Retrofit, JSON, etc.)
-&nbsp;&nbsp;```bash
-&nbsp;&nbsp; flutter pub run build_runner build --delete-conflicting-outputs
-&nbsp;&nbsp;```
+```bash
+ flutter pub run build_runner build --delete-conflicting-outputs
+```
 6. Run the app on your desired platform:
-&nbsp;&nbsp;```bash
-&nbsp;&nbsp;flutter run
-&nbsp;&nbsp;```
+```bash
+flutter run
+```
 
 
 ## Prérquis 
