@@ -63,13 +63,13 @@ Après l'installation de l'application, vous verrez un écran principale avec un
 ## Captures d'écran et démonstration
 
 ### Écran principal*
-![Écran principal](screenshots/home_screen.png)
+![Écran principal](<img width="200" alt="home_screen" src="screenshots/home_screen.png" />)
 
 ### Recherche d"une ville
-![Recherche d'une ville](screenshots/home_screen_sugest.png)
+![Recherche d'une ville](<img width="200" alt="home_screen" src="screenshots/home_screen_sugest.png" />)
 
 ### Prévisions météo
-![Prévision météo](screenshots/home_screen_result.png)
+![Prévision météo](<img width="200" alt="home_screen" src="screenshots/home_screen_result.png" />)
 
 ### Démonstration Video
 ![Démo WeatherApp](screenshots/home_screen_video.mp4)
