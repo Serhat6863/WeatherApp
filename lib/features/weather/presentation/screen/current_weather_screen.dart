@@ -29,17 +29,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
-            child: BlocConsumer<WeatherBloc, WeatherState>(
-              listener: (context, state) {
-                if (state.status.isError) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(state.message),
-                      backgroundColor: Colors.red,
-                    ),
-                  );
-                }
-              },
+            child: BlocBuilder<WeatherBloc, WeatherState>(
               builder: (context, state) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,7 +64,9 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
 
                     const SizedBox(height: 10),
 
-                    if (state.suggestions != null)
+                    // Suggestions
+                    if (state.suggestions != null &&
+                        state.suggestions!.isNotEmpty)
                       Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -91,7 +83,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: state.suggestions!.length,
-                          itemBuilder: (context, index){
+                          itemBuilder: (context, index) {
                             return ListTile(
                               title: Text(
                                 state.suggestions![index].name,
@@ -107,126 +99,46 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                                   color: Colors.black54,
                                 ),
                               ),
-
-                              onTap: (){
-                                _controller.text = state.suggestions![index].name;
+                              onTap: () {
+                                _controller.text =
+                                    state.suggestions![index].name;
                                 context.read<WeatherBloc>().add(
-                                  FetchWeatherEvent(cityName: _controller.text.trim()),
+                                  FetchWeatherEvent(
+                                      cityName: _controller.text.trim()),
                                 );
-
                               },
                             );
                           },
                         ),
                       ),
 
-
                     const SizedBox(height: 20),
 
+                    // Loading
                     if (state.status.isLoading)
                       const Center(child: CircularProgressIndicator()),
 
+                    // Weather data found
                     if (state.weatherData != null) ...[
                       const SizedBox(height: 20),
-                      Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
-                              blurRadius: 10,
-                              offset: const Offset(0, 5),
-                            ),
-                          ],
-                        ),
-                        padding: const EdgeInsets.all(16),
-                        child: Column(
-                          children: [
-                            Text(
-                              state.weatherData!.location.name,
-                              style: const TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black87,
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            Image.network(
-                              "https:${state.weatherData!.current.condition.icon}",
-                              height: 100,
-                            ),
-                            const SizedBox(height: 10),
-                            Text(
-                              "${state.weatherData!.current.tempC} °C",
-                              style: const TextStyle(
-                                fontSize: 50,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black87,
-                              ),
-                            ),
-                            Text(
-                              state.weatherData!.current.condition.text,
-                              style: const TextStyle(
-                                fontSize: 20,
-                                color: Colors.black87,
-                              ),
-                            ),
-                            const SizedBox(height: 40),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        "${state.weatherData!.current.windKph} km/h",
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black87,
-                                        ),
-                                      ),
-                                      const Text(
-                                        "Wind",
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          color: Colors.black87,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        "${state.weatherData!.current.humidity} %",
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black87,
-                                        ),
-                                      ),
-                                      const Text(
-                                        "Humidity",
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          color: Colors.black87,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
+                      _buildWeatherCard(state),
                     ],
 
+                    // Error handling
+                    if (state.status.isError && (state.message.isNotEmpty))
+                      Center(
+                        child: Text(
+                          state.message,
+                          style: const TextStyle(
+                              color: Colors.redAccent, fontSize: 16),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+
+                    // Empty result
                     if (state.weatherData == null &&
-                        state.status != WeatherStatus.loading)
+                        state.status != WeatherStatus.loading &&
+                        !state.status.isError)
                       const Center(
                         child: Text(
                           "No results found",
@@ -239,6 +151,104 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildWeatherCard(WeatherState state) {
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 10,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        children: [
+          Text(
+            state.weatherData!.location.name,
+            style: const TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Image.network(
+            "https:${state.weatherData!.current.condition.icon}",
+            height: 100,
+          ),
+          const SizedBox(height: 10),
+          Text(
+            "${state.weatherData!.current.tempC} °C",
+            style: const TextStyle(
+              fontSize: 50,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
+          ),
+          Text(
+            state.weatherData!.current.condition.text,
+            style: const TextStyle(
+              fontSize: 20,
+              color: Colors.black87,
+            ),
+          ),
+          const SizedBox(height: 40),
+          Row(
+            children: [
+              Expanded(
+                child: Column(
+                  children: [
+                    Text(
+                      "${state.weatherData!.current.windKph} km/h",
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    const Text(
+                      "Wind",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black87,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  children: [
+                    Text(
+                      "${state.weatherData!.current.humidity} %",
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    const Text(
+                      "Humidity",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black87,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
