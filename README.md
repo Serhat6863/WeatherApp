@@ -84,19 +84,17 @@ Après l'installation de l'application, vous verrez un écran principal avec une
 ---
 
 
-## Capture d'écran et Gif
+## 📱 Captures d’écran et Démonstration
 
-### Écran principal
-<img src="screenshots/home_screen.png" width="400" />
+### Écran principal & Recherche d'une ville
+<p align="center">
+  <img src="screenshots/home_screen.png" width="45%" />
+  <img src="screenshots/home_screen_sugest.png" width="45%" />
+</p>
 
+### Prévisions météo & Démonstration vidéo
+<p align="center">
+  <img src="screenshots/home_screen_result.png" width="45%" />
+  <img src="screenshots/home_screen_video_gif.gif" width="45%" />
+</p>
 
-### Recherche d'une ville
-<img src="screenshots/home_screen_sugest.png" width="400" />
-
-
-### Prévisions météo
-<img src="screenshots/home_screen_result.png" width="400" />
-
-
-### Démonstration vidéo
-<img src="screenshots/home_screen_video_gif.gif" width="400" />
