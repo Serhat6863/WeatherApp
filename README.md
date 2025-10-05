@@ -98,3 +98,45 @@ Après l'installation de l'application, vous verrez un écran principal avec une
   <img src="screenshots/home_screen_video_gif.gif" width="45%" />
 </p>
 
+
+## 🏗️ Architecture du projet
+
+Voici l’arborescence du projet **WeatherApp** :
+
+```bash
+WeatherApp/
+├── android/                     # Configuration Android
+├── ios/                         # Configuration iOS
+├── lib/                         # Code source principal
+│   ├── core/                    # Constantes, helpers, utils partagés
+│   │   └── constants.dart       # Fichier contenant les constantes globales
+│   ├── features/                # Fonctionnalités de l'application
+│   │   └── weather/             # Module météo : data, domain, presentation
+│   ├── data/                    # Modèles et sources de données (API)
+│   ├── domain/                  # Entités et use cases
+│   ├── presentation/            # UI, widgets, pages
+│   └── main.dart                # Point d'entrée de l'application
+├── test/                        # Tests unitaires et d'intégration
+│   └── features/                # Tests par fonctionnalité
+├── screenshots/                 # Captures d’écran utilisées dans le README
+├── pubspec.yaml                 # Dépendances du projet
+└── README.md                    # Documentation principale
+
+```
+
+- `core/` : contient les utilitaires, helpers, constantes partagés dans l’appli  
+- `features/weather/` : tout ce qui est lié à la fonctionnalité météo  
+- `presentation/` : écrans, widgets, interface utilisateur  
+- `domain/` : logique métier, entités, cas d’usage  
+- `data/` : récupération des données (API, services externes, parsing JSON)  
+- `test/` : tests unitaires et d’intégration  
+- `screenshots/` : captures d’écran utilisées dans le README  
+
+---
+
+
+
+
+
+
+
