@@ -98,6 +98,8 @@ Après l'installation de l'application, vous verrez un écran principal avec une
   <img src="screenshots/home_screen_video_gif.gif" width="45%" />
 </p>
 
+---
+
 
 ## 🏗️ Architecture du projet
 
@@ -105,34 +107,75 @@ Voici l’arborescence du projet **WeatherApp** :
 
 ```bash
 WeatherApp/
-├── android/                     # Configuration Android
-├── ios/                         # Configuration iOS
-├── lib/                         # Code source principal
-│   ├── core/                    # Constantes, helpers, utils partagés
-│   │   └── constants.dart       # Fichier contenant les constantes globales
-│   ├── features/                # Fonctionnalités de l'application
-│   │   └── weather/             # Module météo : data, domain, presentation
-│   ├── data/                    # Modèles et sources de données (API)
-│   ├── domain/                  # Entités et use cases
-│   ├── presentation/            # UI, widgets, pages
-│   └── main.dart                # Point d'entrée de l'application
-├── test/                        # Tests unitaires et d'intégration
-│   └── features/                # Tests par fonctionnalité
-├── screenshots/                 # Captures d’écran utilisées dans le README
-├── pubspec.yaml                 # Dépendances du projet
-└── README.md                    # Documentation principale
-
+├── android/                        
+├── ios/                            
+├── lib/                            
+│   ├── core/                       
+│   │   └── constants/              
+│   │       └── constants.dart      
+│   ├── features/                   
+│   │   └── weather/                
+│   │       ├── data/               
+│   │       │   ├── api/            
+│   │       │   ├── models/         
+│   │       │   └── repository/     
+│   │       ├── domain/             
+│   │       │   ├── entities/       
+│   │       │   └── repository/     
+│   │       └── presentation/       
+│   │           ├── bloc/           
+│   │           └── screen/         
+│   └── main.dart                   
+├── linux/                          
+├── macos/                          
+├── screenshots/                    
+├── test/                           
+│   └── features/                   
+│       └── weather/                
+│           ├── data/               
+│           │   ├── models/         
+│           │   │   ├── current_weather_model_test.dart
+│           │   │   ├── location_model_test.dart
+│           │   │   ├── weather_condition_model_test.dart
+│           │   │   └── weather_data_model_test.dart
+│           │   └── repository/     
+│           │       └── weather_repository_impl_test.dart
+│           └── presentation/       
+│               └── bloc/           
+│                   └── weather_bloc_test.dart
+├── web/                            
+├── pubspec.yaml                    
+└── README.md                       
 ```
 
-- `core/` : contient les utilitaires, helpers, constantes partagés dans l’appli  
-- `features/weather/` : tout ce qui est lié à la fonctionnalité météo  
-- `presentation/` : écrans, widgets, interface utilisateur  
-- `domain/` : logique métier, entités, cas d’usage  
-- `data/` : récupération des données (API, services externes, parsing JSON)  
-- `test/` : tests unitaires et d’intégration  
-- `screenshots/` : captures d’écran utilisées dans le README  
+---
+
+###  Description des dossiers
+
+- **core/** → contient les **constantes, utilitaires et helpers** réutilisables dans toute l’application.  
+- **features/weather/** → regroupe **l’ensemble de la logique fonctionnelle** liée à la météo (data, domain, presentation).  
+- **data/** → gère la **récupération et la transformation des données** (appels API, modèles, repositories).  
+- **domain/** → définit la **logique métier** de l’application (entités, interfaces, use cases).  
+- **presentation/** → contient la **couche interface utilisateur**, les **widgets**, les **écrans**, et la **gestion d’état via BLoC**.  
+- **test/** → inclut les **tests unitaires et d’intégration** pour garantir la stabilité du code.  
+- **screenshots/** → regroupe les **images et GIFs** utilisés dans la documentation du projet.  
 
 ---
+
+## Contact  
+
+Si vous souhaitez en savoir plus sur ce projet ou discuter de développement Flutter, n’hésitez pas à me contacter :  
+
+**kurkluserhat@gmail.com**   
+[GitHub – Serhat6863](https://github.com/Serhat6863)  
+
+---
+
+✨ Développé avec **Flutter**  
+© 2025 – Serhat KÜRKLÜ
+
+
+
 
 
 
